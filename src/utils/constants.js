@@ -1,3 +1,8 @@
+export const coordinates = {
+  latitude: 40.7128, // New York City latitude
+  longitude: -74.006, // New York City longitude
+};
+
 export const weatherOptions = [
   {
     day: true,

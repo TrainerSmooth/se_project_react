@@ -39,3 +39,10 @@
   font-weight: 700;
   line-height: 1.2;
 }
+
+.header__logo {
+  margin-right: 24px;
+  background: url("../../assets/images/wtwr°.svg") no-repeat;
+  width: 100px;
+  height: 24px;
+}
