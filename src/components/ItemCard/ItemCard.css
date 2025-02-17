@@ -1,0 +1,39 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card__name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card__image {
+  max-width: 100%;
+  height: auto;
+}
+
+.card__image:hover {
+  transform: scale(1.05);
+}
+
+.card__image:active {
+  transform: scale(0.95);
+}
+
+.card__image:focus {
+  outline: none;
+}

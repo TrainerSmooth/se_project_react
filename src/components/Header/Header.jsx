@@ -1,5 +1,7 @@
 import "./Header.css";
 
+import avatar from "../../assets/images/Forecast.png";
+
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -10,7 +12,7 @@ function Header({ handleAddClick, weatherData }) {
     <header className="header">
       <img
         className="header__logo"
-        src={logo}
+        src={new URL("../assets/logo.png", import.meta.url).href}
         alt="WTWR (What to Wear?) logo"
       />
       <p className="header__date-and-location">

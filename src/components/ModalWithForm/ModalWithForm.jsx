@@ -4,11 +4,11 @@ import closeButton from "../../assets/images/Closebutton.svg";
 
 function ModalWithForm({
   children,
-  buttonText,
-  title,
-  isOpen,
-  onClose,
-  onSubmit,
+  buttonText = "Submit",
+  title = "Default Title",
+  isOpen = false,
+  onClose = () => {},
+  onSubmit = () => {},
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
