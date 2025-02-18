@@ -16,7 +16,7 @@ function Header({ handleAddClick, weatherData }) {
     <header className="header">
       <img
         className="header__logo"
-        src={new URL("../assets/logo.png", import.meta.url).href}
+        src={new URL("../../assets/images/wtwr°.svg", import.meta.url).href}
         alt="WTWR (What to Wear?) logo"
       />
       <p className="header__date-and-location">
