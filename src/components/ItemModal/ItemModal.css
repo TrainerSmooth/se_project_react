@@ -25,12 +25,7 @@
   padding: 20px 32px 32px 32px;
 }
 
-.modal__close_type_image {
-  background-image: url("/src/images/white-close-icon.svg");
-  background-color: transparent;
-}
-
-.modal__close_type_image:hover {
-  background-image: url("/src/images/close-icon.svg");
+.modal__close {
+  background-image: url("../../assets/images/Closebutton.svg");
   background-color: transparent;
 }
