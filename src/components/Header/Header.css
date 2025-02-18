@@ -42,13 +42,18 @@
 
 .header__logo {
   margin-right: 24px;
-  background: url("../../assets/images/wtwr°.svg") no-repeat;
   width: 100px;
   height: 24px;
 }
 
-.weather {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+
+.header__forecast-icon {
+  width: 50px;
+  height: auto;
+  border: 1px solid red;
 }
