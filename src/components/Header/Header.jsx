@@ -1,12 +1,16 @@
 import "./Header.css";
 
-import avatar from "../../assets/images/Forecast.png";
+import avatar from "../../assets/images/Ellipse 18.svg";
+import logo from "../../assets/images/Forecast.png";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
+    year: "numeric",
   });
+
+  <img src={logo} alt="Weather" />;
 
   return (
     <header className="header">

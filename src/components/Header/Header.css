@@ -46,3 +46,9 @@
   width: 100px;
   height: 24px;
 }
+
+.weather {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
