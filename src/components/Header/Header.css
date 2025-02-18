@@ -55,5 +55,5 @@
 .header__forecast-icon {
   width: 50px;
   height: auto;
-  border: 1px solid red;
+  display: flex;
 }

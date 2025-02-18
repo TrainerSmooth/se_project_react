@@ -7,62 +7,63 @@ export const weatherOptions = [
   {
     day: true,
     condition: "clear",
-    url: new URL("", import.meta.url).href,
+    url: new URL("../assets/images/Sunny.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "cloudy",
-    url: new URL("", import.meta.url).href,
+    url: new URL("../assets/images/PartlyCloudy.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "rain",
-    url: new URL("", import.meta.url).href,
+    url: new URL("../assets/images/RainyDay.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "storm",
-    url: new URL("../assets/day/storm.png", import.meta.url).href,
+    url: new URL("../assets/images/ThunderStormDay.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "snow",
-    url: new URL("../assets/day/snow.png", import.meta.url).href,
+    url: new URL("../assets/images/SnowDay.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "fog",
-    url: new URL("", import.meta.url).href,
+    url: new URL("../assets/images/DayFog.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "clear",
-    url: new URL("", import.meta.url).href,
+    url: new URL("../assets/images/Moon.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "cloudy",
-    url: new URL("", import.meta.url).href,
+    url: new URL("../assets/images/CloudyNight.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "rain",
-    url: new URL("", import.meta.url).href,
+    url: new URL("../assets/images/RainyNight.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "storm",
-    url: new URL("", import.meta.url).href,
+    url: new URL("../assets/images/ThunderStormNight.png", import.meta.url)
+      .href,
   },
   {
     day: false,
     condition: "snow",
-    url: new URL("", import.meta.url).href,
+    url: new URL("../assets/images/SnowNight.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "fog",
-    url: new URL("", import.meta.url).href,
+    url: new URL("../assets/images/Foggynight.png", import.meta.url).href,
   },
 ];
 
