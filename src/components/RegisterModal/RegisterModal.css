@@ -1,0 +1,11 @@
+.modal__input_type_password {
+  padding-top: 24px;
+}
+.modal__input_type_avatarurl {
+  padding-top: 24px;
+}
+.modal__or-login-button {
+  border: none;
+  background: transparent;
+  color: #00000080;
+}
