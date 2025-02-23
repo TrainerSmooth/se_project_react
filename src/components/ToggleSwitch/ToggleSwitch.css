@@ -1,57 +1,52 @@
-.switch {
-  display: flex;
-  align-items: center;
-  position: relative;
-  font-family: "Cabinet Grotesk";
-  font-size: 14px;
-  line-height: 17.36px;
-  font-weight: 700;
-}
-
-.switch__box {
-  border-radius: 20px;
-  border: 2px solid #7e7e7e;
+.toggle__switch {
   width: 56px;
   height: 28px;
-  outline: none;
-  appearance: none;
+  border: 2px solid black;
+  border-radius: 20px;
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  margin-left: auto;
 }
 
-.switch__slider {
-  border-radius: 20px;
+.toggle__switch-module {
+  opacity: 0;
+}
+
+.toggle__switch-slide {
+  background-color: black;
   width: 28px;
   height: 28px;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  cursor: pointer;
   position: absolute;
+  border-radius: 50%;
+  left: 0;
+  transition: all 1s;
+  overflow: auto;
 }
-.switch__slider-F {
-  top: 0px;
-  left: 27px;
-  color: #000;
+
+.toggle__switch-text_f {
+  left: 9px;
 }
-.switch__slider-C {
-  top: 0px;
-  left: 1px;
-  color: #000;
+
+.toggle__switch-text_c {
+  right: 9px;
 }
-.switch__active {
-  color: #fff;
-}
-.switch__temp-F {
+
+.toggle__switch-text {
+  color: grey;
   position: absolute;
-  top: -6px;
-  left: 39px;
-  color: #f3f3f3;
-  cursor: pointer;
+  top: 4px;
+  font-size: 14px;
 }
-.switch__temp-C {
-  position: absolute;
-  top: -7px;
-  left: 11px;
-  color: #f3f3f3;
-  cursor: pointer;
+
+.toggle__switch-box:checked ~ .toggle__switch-slide {
+  left: 28px;
+}
+
+.toggle__switch-box:not(:checked) ~ .toggle__switch-text_f {
+  color: white;
+}
+
+.toggle__switch-box:checked ~ .toggle__switch-text_c {
+  color: white;
 }
