@@ -1,48 +1,21 @@
-import React, { useState, useContext } from "react";
+import CurrentTemperatureUnitContext from "../../context/CurrentTemperatureUnitContext";
 import "./ToggleSwitch.css";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { useContext } from "react";
 
-const ToggleSwitch = () => {
-  // const [currentTemperatureUnit, handleToggleSwitchChange] = useState("C");
-  // const handleChange = (e) => {
-  //   if (currentTemperatureUnit === "C") handleToggleSwitchChange("F");
-  //   if (currentTemperatureUnit === "F") handleToggleSwitchChange("C");
-  // };
-  // console.log(currentTemperatureUnit);
-  const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
+export default function ToggleSwitch() {
+  const { handleToggleSwitchChange, CurrentTemperatureUnit } = useContext(
     CurrentTemperatureUnitContext
   );
-
   return (
-    <label htmlFor="" className="switch">
+    <label className="toggle__switch">
       <input
-        type="checkbox"
-        className="switch__box"
         onChange={handleToggleSwitchChange}
+        type="checkbox"
+        className="toggle__switch-box"
       />
-      <span
-        className={
-          currentTemperatureUnit === "F"
-            ? "switch__slider switch__slider-F"
-            : "switch__slider switch__slider-C"
-        }
-      ></span>
-      <p
-        className={`switch__temp-F ${
-          currentTemperatureUnit === "F" && "switch__active"
-        }`}
-      >
-        F
-      </p>
-      <p
-        className={`switch__temp-C ${
-          currentTemperatureUnit === "C" && "switch__active"
-        }`}
-      >
-        C
-      </p>
+      <span className="toggle__switch-slider"></span>
+      <span className={`toggle__switch-text toggle__switch-text_f`}>F</span>
+      <span className="toggle__switch-text toggle__switch-text_c">C</span>
     </label>
   );
-};
-
-export default ToggleSwitch;
+}
