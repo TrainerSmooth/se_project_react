@@ -20,7 +20,7 @@ function DeleteModal({ card, onClose, handleDeleteCard, isOpen }) {
         </h2>
         <div className="delete__modal-footer">
           <button
-            onClick={() => handleDeleteCard()}
+            onClick={() => handleDeleteCard(card.id)}
             type="submit"
             className="delete__modal-button"
           >
