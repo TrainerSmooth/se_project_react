@@ -22,7 +22,7 @@ function DeleteModal({ card, onClose, handleDeleteCard, isOpen }) {
           <button
             onClick={() => handleDeleteCard()}
             type="submit"
-            className="delete__modal-btn"
+            className="delete__modal-button"
           >
             Yes, delete item
           </button>
