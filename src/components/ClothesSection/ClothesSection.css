@@ -9,7 +9,6 @@
   padding-top: 20px;
 }
 .clothes-section__items {
-  font-family: "Cabinet Grotesk";
   font-weight: 700;
   font-size: 20px;
   line-height: 24.8px;
@@ -21,7 +20,6 @@
   gap: 21px;
 }
 .clothes-section__add {
-  font-family: "Cabinet Grotesk";
   font-weight: 700;
   font-size: 20px;
   line-height: 24.8px;
