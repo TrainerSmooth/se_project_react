@@ -1,13 +1,11 @@
 import "./DeleteModal.css";
-import ItemModal from "../ItemModal/ItemModal"; // Ensure this path is correct
-import { useState } from "react";
 
 function DeleteModal({ card, onClose, handleDeleteCard, isOpen }) {
   if (!isOpen) return null; // Ensures modal only renders when open
 
   return (
     <div className="modal-overlay">
-      <div className="modal">
+      <div className={'modal_type_delete ${isOpen && "modal_opened"}'}>
         <button onClick={onClose} type="button" className="modal__close">
           ✕
         </button>
