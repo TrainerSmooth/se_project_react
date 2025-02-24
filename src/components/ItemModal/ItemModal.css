@@ -23,11 +23,8 @@
 
 .modal__footer {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: flex-start; /* Align text to the left */
   padding: 16px;
-  position: relative; /* Ensure delete button is positioned within */
-  flex-direction: column;
+  justify-content: space-between;
 }
 
 .modal__close {

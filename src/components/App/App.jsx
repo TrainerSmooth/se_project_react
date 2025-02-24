@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
+import DeleteModal from "../DeleteModal/DeleteModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 
@@ -30,6 +31,10 @@ function App() {
     setActiveModal("");
   };
 
+  const openDeleteModal = () => {
+    setActiveModal("delete");
+  };
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -53,7 +58,7 @@ function App() {
         onClose={closeActiveModal}
       >
         <label htmlFor="name" className="modal__label">
-          Name{" "}
+          Name
           <input
             type="text"
             className="modal__input"
@@ -62,7 +67,7 @@ function App() {
           />
         </label>
         <label htmlFor="imageUrl" className="modal__label">
-          Image{" "}
+          Image
           <input
             type="url"
             className="modal__input"
@@ -120,7 +125,12 @@ function App() {
         activeModal={activeModal}
         card={selectedCard}
         onClose={closeActiveModal}
+        setActiveModal={setActiveModal}
+        onOpenDelete={openDeleteModal} // Pass function to open delete modal
       />
+      {activeModal === "delete" && (
+        <DeleteModal isOpen={true} onClose={closeActiveModal} />
+      )}
     </div>
   );
 }
