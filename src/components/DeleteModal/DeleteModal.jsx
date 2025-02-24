@@ -5,7 +5,7 @@ function DeleteModal({ card, onClose, handleDeleteCard, isOpen }) {
 
   return (
     <div className="modal-overlay">
-      <div className={'modal_type_delete ${isOpen && "modal_opened"}'}>
+      <div className={`modal_type_delete ${isOpen && "modal_opened"}`}>
         <button onClick={onClose} type="button" className="modal__close">
           ✕
         </button>
