@@ -27,7 +27,7 @@
   align-items: flex-start; /* Align text to the left */
   padding: 16px;
   position: relative; /* Ensure delete button is positioned within */
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .modal__close {
@@ -43,7 +43,6 @@
   font-size: 16px;
   display: flex;
   gap: 8px;
-  margin-left: auto; /* Pushes it to the right */
 }
 
 .modal__delete-button:hover {
