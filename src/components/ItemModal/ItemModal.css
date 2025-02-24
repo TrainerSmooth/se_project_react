@@ -27,19 +27,12 @@
   align-items: flex-start; /* Align text to the left */
   padding: 16px;
   position: relative; /* Ensure delete button is positioned within */
+  flex-direction: row;
 }
 
 .modal__close {
   background-image: url("../../assets/images/Closebutton.svg");
   background-color: transparent;
-}
-
-.modal__footer {
-  display: flex;
-  justify-content: space-between; /* Keeps "Delete item" on the right */
-  align-items: center;
-  padding: 16px;
-  width: 100%;
 }
 
 .modal__delete-button {
