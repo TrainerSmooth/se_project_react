@@ -1,7 +1,7 @@
 import "./DeleteModal.css";
 
 function DeleteModal({ card, onClose, handleDeleteCard, isOpen }) {
-  if (!isOpen) return null; // Ensures modal only renders when open
+  if (!isOpen || !card) return null; // Prevent rendering if no card is selected
 
   return (
     <div className="modal-overlay">
@@ -15,11 +15,11 @@ function DeleteModal({ card, onClose, handleDeleteCard, isOpen }) {
           irreversible.
         </h2>
 
-        {card && <p className="delete__modal-item">Item: {card.name}</p>}
+        <p className="delete__modal-item">Item: {card.name}</p>
 
         <div className="delete__modal-footer">
           <button
-            onClick={() => handleDeleteCard(card.id)}
+            onClick={() => handleDeleteCard(card?.id)} // Safely access id
             type="button"
             className="delete__modal-button"
           >
