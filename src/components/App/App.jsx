@@ -8,6 +8,8 @@ import ItemModal from "../ItemModal/ItemModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
+import Profile from "../Profile/Profile";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
