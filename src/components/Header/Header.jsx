@@ -2,6 +2,7 @@ import "./Header.css";
 
 import avatar from "../../assets/images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { NavLink } from "react-router-dom";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -31,6 +32,8 @@ function Header({ handleAddClick, weatherData }) {
       <div className="header__user-container">
         <p className="header__username">Terrence Tegegne</p>
         <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
       </div>
     </header>
   );
