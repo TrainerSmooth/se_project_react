@@ -1,10 +1,17 @@
 import "./Header.css";
-
 import avatar from "../../assets/images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, weatherData, activeModal }) {
+  console.log("Header component rendered"); // Check if component re-renders
+  console.log("Received handleAddClick:", handleAddClick); // Debugging function prop
+
+  useEffect(() => {
+    console.log("activeModal changed:", activeModal); // Track modal state updates
+  }, [activeModal]);
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -21,11 +28,20 @@ function Header({ handleAddClick, weatherData }) {
         />
       </NavLink>
       <p className="header__date-and-location">
-        {currentDate}, {weatherData.city}
+        {currentDate}, {weatherData?.city || "Unknown Location"}{" "}
+        {/* Handle potential undefined data */}
       </p>
       <ToggleSwitch />
       <button
-        onClick={handleAddClick}
+        onClick={() => {
+          console.log("Add clothes button clicked"); // Ensure button press is registered
+          if (handleAddClick) {
+            handleAddClick();
+            console.log("handleAddClick triggered!");
+          } else {
+            console.error("handleAddClick is not defined");
+          }
+        }}
         type="button"
         className="header__add-clothes-btn"
       >
