@@ -1,5 +1,6 @@
 import React from "react";
 import "./Profile.css";
+import ClothesSection from "../ClothesSection/ClothesSection";
 
 const Profile = ({
   handleAddClick,

@@ -4,7 +4,6 @@ import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
@@ -69,6 +68,10 @@ function App() {
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
         <Footer />
       </div>
+      <AddItemModal
+        onClose={closeActiveModal}
+        isOpen={activeModal === "add-garment"}
+      />
 
       <Routes>
         <Route
