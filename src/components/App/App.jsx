@@ -10,6 +10,7 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -20,6 +21,14 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
   const [clothingItems, setClothingItems] = useState([]); // List of clothing items
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
+  const handleToggleSwitchChange = () => {
+    console.log("Toggle switch clicked");
+    setCurrentTemperatureUnit((prev) => (prev === "F" ? "C" : "F"));
+  };
+
+  console.log("Current Temperature Unit:", currentTemperatureUnit);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -62,46 +71,50 @@ function App() {
   }, []);
 
   return (
-    <div className="page">
-      <div className="page__content">
-        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
-        <Footer />
-      </div>
-      <AddItemModal
-        onClose={closeActiveModal}
-        isOpen={activeModal === "add-garment"}
-      />
-
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Main weatherData={weatherData} onCardClick={handleCardClick} />
-          }
-        />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-
-      {/* Item Modal */}
-      <ItemModal
-        activeModal={activeModal}
-        card={selectedCard}
-        onClose={closeActiveModal}
-        setActiveModal={setActiveModal}
-        onOpenDelete={openDeleteModal} // Pass function to open delete modal
-      />
-
-      {/* Delete Confirmation Modal */}
-      {activeModal === "delete" && (
-        <DeleteModal
-          isOpen={true}
+    <CurrentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+    >
+      <div className="page">
+        <div className="page__content">
+          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+          <Footer />
+        </div>
+        <AddItemModal
           onClose={closeActiveModal}
-          card={selectedCard} // Pass the selected card
-          handleDeleteCard={handleDeleteCard} // Pass delete function
+          isOpen={activeModal === "add-garment"}
         />
-      )}
-    </div>
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Main weatherData={weatherData} onCardClick={handleCardClick} />
+            }
+          />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+
+        {/* Item Modal */}
+        <ItemModal
+          activeModal={activeModal}
+          card={selectedCard}
+          onClose={closeActiveModal}
+          setActiveModal={setActiveModal}
+          onOpenDelete={openDeleteModal} // Pass function to open delete modal
+        />
+
+        {/* Delete Confirmation Modal */}
+        {activeModal === "delete" && (
+          <DeleteModal
+            isOpen={true}
+            onClose={closeActiveModal}
+            card={selectedCard} // Pass the selected card
+            handleDeleteCard={handleDeleteCard} // Pass delete function
+          />
+        )}
+      </div>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 
