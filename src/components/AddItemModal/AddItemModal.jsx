@@ -32,7 +32,7 @@ const AddItemModal = ({
   return (
     <ModalWithForm
       titleText="New garment"
-      buttonText="Add garment"
+      buttonText="New garment"
       onClose={closeActiveModal}
       isOpen={isOpen}
       name={"addgarment"}
