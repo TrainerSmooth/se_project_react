@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({
-  activeModal,
+  isOpen,
 
   onAddItem,
 
@@ -33,9 +33,8 @@ const AddItemModal = ({
     <ModalWithForm
       titleText="New garment"
       buttonText="Add garment"
-      activeModal={activeModal}
       onClose={closeActiveModal}
-      isOpen={activeModal === "add-garment"}
+      isOpen={isOpen}
       name={"addgarment"}
       onSubmit={handleSubmit}
     >
