@@ -4,6 +4,7 @@
   padding: 0;
   width: 100%;
   max-width: 56px;
+  margin-left: auto;
 }
 
 .toggle-switch__label {
@@ -59,4 +60,49 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.toggle-switch__text_f {
+  left: 0;
+}
+
+.toggle-switch__text_c {
+  right: 0;
+}
+
+.toggle-switch:hover {
+  border-color: black;
+}
+
+.toggle-switch__label:hover {
+  border-color: black;
+}
+
+.toggle-switch__label:hover .toggle-switch__value {
+  color: white;
+}
+
+.toggle-switch__input:checked ~ .toggle-switch__text_c {
+  color: white;
+}
+
+.toggle-switch__input:not(:checked) ~ .toggle-switch__text_f {
+  color: white;
+}
+
+.toggle-switch__label:hover
+  .toggle-switch__input:not(:checked)
+  ~ .toggle-switch__circle {
+  width: 30px;
+}
+
+.toggle-switch__label:hover
+  .toggle-switch__input:checked
+  ~ .toggle-switch__circle {
+  width: 30px;
+  transform: translate(-2px);
+}
+
+.toggle-switch__input:checked ~ .toggle-switch__circle {
+  left: calc(56px - 28px - 2px);
 }

@@ -20,39 +20,55 @@ function Header({ handleAddClick, weatherData, activeModal }) {
 
   return (
     <header className="header">
-      <NavLink to="/" className="header__link">
-        <img
-          className="header__logo"
-          src={new URL("../../assets/images/wtwr°.svg", import.meta.url).href}
-          alt="WTWR (What to Wear?) logo"
-        />
-      </NavLink>
-      <p className="header__date-and-location">
-        {currentDate}, {weatherData?.city || "Unknown Location"}{" "}
-        {/* Handle potential undefined data */}
-      </p>
-      <ToggleSwitch />
-      <button
-        onClick={() => {
-          console.log("Add clothes button clicked"); // Ensure button press is registered
-          if (handleAddClick) {
-            handleAddClick();
-            console.log("handleAddClick triggered!");
-          } else {
-            console.error("handleAddClick is not defined");
-          }
-        }}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add clothes
-      </button>
-      <NavLink to="/profile">
-        <div className="header__user-container">
-          <p className="header__username">Terrence Tegegne</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
-        </div>
-      </NavLink>
+      <div className="header__container">
+        <NavLink to="/" className="header__link">
+          <img
+            className="header__logo"
+            src={new URL("../../assets/images/wtwr°.svg", import.meta.url).href}
+            alt="WTWR (What to Wear?) logo"
+          />
+        </NavLink>
+        <p className="header__date-and-location">
+          {currentDate}, {weatherData?.city || "Unknown Location"}{" "}
+          {/* Handle potential undefined data */}
+        </p>
+      </div>
+
+      {/* Navigation Section */}
+      <nav className="navigation">
+        <ul className="navigation__menu">
+          <ToggleSwitch />
+          <li>
+            <button
+              onClick={() => {
+                console.log("Add clothes button clicked"); // Ensure button press is registered
+                if (handleAddClick) {
+                  handleAddClick();
+                  console.log("handleAddClick triggered!");
+                } else {
+                  console.error("handleAddClick is not defined");
+                }
+              }}
+              type="button"
+              className="header__add-clothes-btn"
+            >
+              + Add clothes
+            </button>
+          </li>
+          <li>
+            <NavLink to="/profile">
+              <div className="header__user-container">
+                <p className="header__username">Terrence Tegegne</p>
+                <img
+                  src={avatar}
+                  alt="Terrence Tegegne"
+                  className="header__avatar"
+                />
+              </div>
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }
