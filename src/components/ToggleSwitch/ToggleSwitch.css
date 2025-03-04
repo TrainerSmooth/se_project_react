@@ -1,44 +1,62 @@
-.toggle__switch {
-  width: 56px;
-  height: 28px;
-  border: 2px solid black;
-  border-radius: 20px;
-  cursor: pointer;
-  overflow: hidden;
+.toggle-switch {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 56px;
+}
+
+.toggle-switch__label {
+  display: block;
+  box-sizing: border-box;
   position: relative;
-  margin-left: auto;
-}
-.toggle__switch-module {
-  opacity: 0;
-}
-.toggle__switch-slide {
-  background-color: black;
-  width: 28px;
   height: 28px;
+  width: 56px;
+  background: white;
+  border: 2px solid #7e7e7e;
+  border-radius: 20px;
+}
+
+.toggle-switch__input {
   position: absolute;
-  border-radius: 50%;
-  left: 0;
-  transition: all 1s;
-  overflow: auto;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }
-.toggle__switch-text_f {
-  left: 9px;
-}
-.toggle__switch-text_c {
-  right: 9px;
-}
-.toggle__switch-text {
-  color: grey;
+
+.toggle-switch__circle {
   position: absolute;
-  top: 4px;
+  top: -2px;
+  left: -2px;
+  height: 28px;
+  width: 28px;
+
+  border-radius: 28px;
+  background-color: black;
+
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+}
+
+.toggle-switch__text {
+  user-select: none;
+
+  color: #7e7e7e;
+  mix-blend-mode: difference;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+
+  font-family: "CabinetGrotesk-Bold";
+  font-weight: 700;
   font-size: 14px;
-}
-.toggle__switch-box:checked ~ .toggle__switch-slide {
-  left: 28px;
-}
-.toggle__switch-box:not(:checked) ~ .toggle__switch-text_f {
-  color: white;
-}
-.toggle__switch-box:checked ~ .toggle__switch-text_c {
-  color: white;
+  line-height: 1.24;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

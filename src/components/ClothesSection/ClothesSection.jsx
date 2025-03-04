@@ -1,6 +1,6 @@
-import React from "react";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
+import { useContext } from "react";
 
 const ClothesSection = ({
   handleAddClick,

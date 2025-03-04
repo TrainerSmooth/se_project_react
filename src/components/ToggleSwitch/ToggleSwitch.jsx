@@ -1,20 +1,33 @@
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
 import "./ToggleSwitch.css";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
+
 export default function ToggleSwitch() {
-  const { handleToggleSwitchChange, CurrentTemperatureUnit } = useContext(
+  const { handleToggleSwitchChange, currentTemperatureUnit } = useContext(
     CurrentTemperatureUnitContext
   );
+
+  const [isChecked, setIsChecked] = useState(currentTemperatureUnit === "C");
+  useEffect(
+    () => setIsChecked(currentTemperatureUnit === "C"),
+    [currentTemperatureUnit]
+  );
+
+  console.log(currentTemperatureUnit);
   return (
-    <label className="toggle__switch">
-      <input
-        onChange={handleToggleSwitchChange}
-        type="checkbox"
-        className="toggle__switch-module"
-      />
-      <span className="toggle__switch-slide"></span>
-      <span className={`toggle__switch-text toggle__switch-text_f`}>F</span>
-      <span className="toggle__switch-text toggle__switch-text_c">C</span>
-    </label>
+    <div className="toggle-switch">
+      <label className="toggle-switch__label">
+        <input
+          onChange={handleToggleSwitchChange}
+          type="checkbox"
+          className="toggle-switch__input"
+          value={currentTemperatureUnit}
+          checked={isChecked} // Add this line
+        />
+        <span className="toggle-switch__circle"></span>
+        <span className={`toggle-switch__text toggle-switch__text_f`}>F</span>
+        <span className="toggle-switch__text toggle-switch__text_c">C</span>
+      </label>
+    </div>
   );
 }

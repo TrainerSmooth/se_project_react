@@ -29,8 +29,9 @@
 
 .modal__close {
   position: absolute;
-  background-image: url("/src/images/gray-close-icon.svg");
+  background-image: url("../../assets/images/Closebutton.svg");
   background-size: cover;
+  repeat: no-repeat;
   border: none;
   cursor: pointer;
   width: 20px;

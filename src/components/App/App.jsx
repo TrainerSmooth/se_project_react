@@ -11,6 +11,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -114,6 +115,7 @@ function App() {
           />
         )}
       </div>
+      <ToggleSwitch />
     </CurrentTemperatureUnitContext.Provider>
   );
 }
