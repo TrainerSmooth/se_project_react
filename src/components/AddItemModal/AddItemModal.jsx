@@ -1,41 +1,40 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const AddItemModal = ({
-  isOpen,
-
-  onAddItem,
-
-  closeActiveModal,
-}) => {
+const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
   const [name, setName] = useState("");
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
   const [imageUrl, setImageUrl] = useState("");
-  const handleImageUrlChange = (e) => {
-    setImageUrl(e.target.value);
-  };
   const [weather, setWeather] = useState("");
-  const handleWeatherChange = (e) => {
-    console.log(e.target.value);
-    setWeather(e.target.value);
-  };
 
-  const handleSubmit = (e) => {
+  const handleNameChange = (e) => setName(e.target.value);
+  const handleImageUrlChange = (e) => setImageUrl(e.target.value);
+  const handleWeatherChange = (e) => setWeather(e.target.value);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting form...");
 
-    onAddItem({ name, imageUrl, weather });
+    try {
+      await onAddItem({ name, imageUrl, weather }); // Ensure the function completes
+      console.log("Item added successfully. Attempting to close modal...");
+      closeActiveModal(); // Call close function
+    } catch (error) {
+      console.error("Error adding item:", error);
+    }
   };
+
+  console.log("Modal open state in AddItemModal:", isOpen);
 
   return (
     <ModalWithForm
       titleText="New garment"
       buttonText="New garment"
-      onClose={closeActiveModal}
+      onClose={() => {
+        console.log("Closing modal from ModalWithForm...");
+        closeActiveModal();
+      }}
       isOpen={isOpen}
-      name={"addgarment"}
+      name="addgarment"
       onSubmit={handleSubmit}
     >
       <label htmlFor="additemmodal-name" className="modal__input_type_name">
