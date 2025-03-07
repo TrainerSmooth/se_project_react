@@ -1,6 +1,7 @@
 import React from "react";
 import "./Profile.css";
 import ClothesSection from "../ClothesSection/ClothesSection";
+import SideBar from "../SideBar/SideBar";
 
 const Profile = ({
   handleAddClick,
@@ -8,7 +9,7 @@ const Profile = ({
   clothingItems,
   selectedCard,
   handleEditProfileModal,
-  onCardLike = { onCardLike },
+  onCardLike,
   handleLogOutClick,
   isLoggedIn,
 }) => {
