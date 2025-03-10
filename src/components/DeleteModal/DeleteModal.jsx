@@ -4,9 +4,11 @@ function DeleteModal({ card, onClose, handleDeleteCard, isOpen }) {
   return (
     <div className="modal-overlay">
       <div className={`modal_type_delete ${isOpen && "modal_opened"}`}>
-        <button onClick={onClose} type="button" className="modal__close">
-          ✕
-        </button>
+        <button
+          onClick={onClose}
+          type="button"
+          className="modal__close"
+        ></button>
         <h2 className="delete__modal-caption">
           Are you sure you want to delete this item? This action is
           irreversible.
