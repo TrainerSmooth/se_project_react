@@ -12,7 +12,7 @@ import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import UserContext from "../SideBar/UserContext";
+import UserContext from "../../utils/UserContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({

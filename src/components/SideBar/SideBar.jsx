@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import UserContext from "./UserContext";
+import UserContext from "../../utils/UserContext";
 import "./SideBar.css";
 import Avatar from "../Avatar/Avatar";
 
