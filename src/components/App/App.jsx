@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import UserContext from "../SideBar/UserContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -72,51 +73,53 @@ function App() {
   }, []);
 
   return (
-    <CurrentTemperatureUnitContext.Provider
-      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-    >
-      <div className="page">
-        <div className="page__content">
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
-          <Footer />
-        </div>
-        <AddItemModal
-          onClose={closeActiveModal}
-          isOpen={activeModal === "add-garment"}
-        />
-
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Main weatherData={weatherData} onCardClick={handleCardClick} />
-            }
-          />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-
-        {/* Item Modal */}
-        <ItemModal
-          activeModal={activeModal}
-          card={selectedCard}
-          onClose={closeActiveModal}
-          setActiveModal={setActiveModal}
-          onOpenDelete={openDeleteModal} // Pass function to open delete modal
-        />
-
-        {/* Delete Confirmation Modal */}
-        {activeModal === "delete" && (
-          <DeleteModal
-            isOpen={true}
+    <UserContext.Provider value={{ name: "Your User Name" }}>
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <div className="page">
+          <div className="page__content">
+            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+            <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+            <Footer />
+          </div>
+          <AddItemModal
             onClose={closeActiveModal}
-            card={selectedCard} // Pass the selected card
-            handleDeleteCard={handleDeleteCard} // Pass delete function
+            isOpen={activeModal === "add-garment"}
           />
-        )}
-      </div>
-      <ToggleSwitch />
-    </CurrentTemperatureUnitContext.Provider>
+
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main weatherData={weatherData} onCardClick={handleCardClick} />
+              }
+            />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+
+          {/* Item Modal */}
+          <ItemModal
+            activeModal={activeModal}
+            card={selectedCard}
+            onClose={closeActiveModal}
+            setActiveModal={setActiveModal}
+            onOpenDelete={openDeleteModal} // Pass function to open delete modal
+          />
+
+          {/* Delete Confirmation Modal */}
+          {activeModal === "delete" && (
+            <DeleteModal
+              isOpen={true}
+              onClose={closeActiveModal}
+              card={selectedCard} // Pass the selected card
+              handleDeleteCard={handleDeleteCard} // Pass delete function
+            />
+          )}
+        </div>
+        <ToggleSwitch />
+      </CurrentTemperatureUnitContext.Provider>
+    </UserContext.Provider>
   );
 }
 

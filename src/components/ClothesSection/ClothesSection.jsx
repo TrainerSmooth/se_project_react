@@ -10,12 +10,6 @@ const ClothesSection = ({
   onCardLike = { onCardLike },
   isLoggedIn,
 }) => {
-  const currentUser = useContext(CurrentUserContext);
-  // const isOwn = selectedCard.owner === currentUser._id;
-  // const clothesSectionItemsClassname = `clothes-section__items ${
-  //   isOwn ? "clothes-section__items_visible" : "clothes-section__items_hidden"
-  // }`;
-
   return (
     <div className="clothes-section">
       <div className="clothes-section__labels">
