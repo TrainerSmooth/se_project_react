@@ -32,6 +32,17 @@ function App() {
 
   console.log("Current Temperature Unit:", currentTemperatureUnit);
 
+  const handleAddItem = (item) => {
+    // Create a new item with a unique ID and the current timestamp
+    const newItem = {
+      id: Date.now(), // This creates a unique ID using the current timestamp
+      ...item, // Spread the item properties (name, imageUrl, weather)
+    };
+
+    // Add the new item to the clothingItems array
+    setClothingItems((prevItems) => [...prevItems, newItem]);
+  };
+
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -86,13 +97,18 @@ function App() {
           <AddItemModal
             onClose={closeActiveModal}
             isOpen={activeModal === "add-garment"}
+            onAddItem={handleAddItem}
           />
 
           <Routes>
             <Route
               path="/"
               element={
-                <Main weatherData={weatherData} onCardClick={handleCardClick} />
+                <Main
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
               }
             />
             <Route path="/profile" element={<Profile />} />

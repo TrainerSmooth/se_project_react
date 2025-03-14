@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 const CurrentTemperatureUnitContext = createContext({
-  CurrentTemperatureUnit: "",
+  CurrentTemperatureUnit: "", // Fix the casing here
   handleToggleSwitchChange: () => {},
 });
 export default CurrentTemperatureUnitContext;

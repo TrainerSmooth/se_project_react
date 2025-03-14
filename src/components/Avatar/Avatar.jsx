@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Avatar.css";
 
 function Avatar({ sizeClass }) {
-  const { name, avatar } = useContext(CurrentUserContext);
+  const { name, avatar } = useContext(currentUserContext);
   const avatarClass = sizeClass ? sizeClass : "";
   return avatar ? (
     <img src={avatar} alt={name} className={`avatar__image ${avatarClass}`} />
