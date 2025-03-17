@@ -98,6 +98,7 @@ function App() {
             onClose={closeActiveModal}
             isOpen={activeModal === "add-garment"}
             onAddItem={handleAddItem}
+            closeActiveModal={closeActiveModal}
           />
 
           <Routes>

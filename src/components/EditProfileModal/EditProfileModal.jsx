@@ -14,7 +14,7 @@ const EditProfileModal = ({ activeModal, closeActiveModal, onEditProfile }) => {
     e.preventDefault();
     onEditProfile({ name, avatarUrl });
   };
-  const currentUser = useContext(CurrentUserContext);
+  const currentUser = useContext(currentUserContext);
   useEffect(() => {
     if (currentUser) {
       setName(currentUser.name);
