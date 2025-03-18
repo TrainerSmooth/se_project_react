@@ -1,6 +1,13 @@
 import "./DeleteModal.css";
+
 function DeleteModal({ card, onClose, handleDeleteCard, isOpen }) {
-  if (!isOpen || !card) return null; // Prevent rendering if no card is selected
+  if (!isOpen || !card) return null;
+
+  const handleConfirmDelete = () => {
+    handleDeleteCard(card.id);
+    onClose();
+  };
+
   return (
     <div className="modal-overlay">
       <div className={`modal_type_delete ${isOpen && "modal_opened"}`}>
@@ -16,7 +23,7 @@ function DeleteModal({ card, onClose, handleDeleteCard, isOpen }) {
         <p className="delete__modal-item">Item: {card.name}</p>
         <div className="delete__modal-footer">
           <button
-            onClick={() => handleDeleteCard(card?.id)} // Safely access id
+            onClick={handleConfirmDelete}
             type="button"
             className="delete__modal-button"
           >
@@ -34,4 +41,5 @@ function DeleteModal({ card, onClose, handleDeleteCard, isOpen }) {
     </div>
   );
 }
+
 export default DeleteModal;
