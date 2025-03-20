@@ -27,7 +27,7 @@ const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
 
   return (
     <ModalWithForm
-      titleText="New garment"
+      title="New garment"
       onClose={() => {
         console.log("Closing modal from ModalWithForm...");
         closeActiveModal();
