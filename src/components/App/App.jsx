@@ -91,7 +91,21 @@ function App() {
         <div className="page">
           <div className="page__content">
             <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-            <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    weatherData={weatherData}
+                    handleCardClick={handleCardClick}
+                    clothingItems={clothingItems}
+                    currentTemperatureUnit={currentTemperatureUnit}
+                  />
+                }
+              />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+
             <Footer />
           </div>
           <AddItemModal
@@ -100,21 +114,6 @@ function App() {
             onAddItem={handleAddItem}
             closeActiveModal={closeActiveModal}
           />
-
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main
-                  weatherData={weatherData}
-                  handleCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                  currentTemperatureUnit={currentTemperatureUnit}
-                />
-              }
-            />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
 
           {/* Item Modal */}
           <ItemModal
