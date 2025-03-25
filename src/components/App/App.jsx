@@ -155,7 +155,7 @@ function App() {
               isOpen={true}
               onClose={closeActiveModal}
               card={selectedCard} // Pass the selected card
-              handleDeleteCard={handleDeleteCard} // Pass delete function
+              handleDeleteCard={() => handleDeleteCard(selectedCard?.id)} // Pass delete function
             />
           )}
         </div>
