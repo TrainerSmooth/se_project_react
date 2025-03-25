@@ -74,6 +74,17 @@ function App() {
     closeActiveModal();
   };
 
+  // Load saved items from localStorage when the app starts
+  useEffect(() => {
+    const savedItems = JSON.parse(localStorage.getItem("clothingItems"));
+    if (savedItems) setClothingItems(savedItems);
+  }, []);
+
+  // Save items to localStorage whenever clothingItems changes
+  useEffect(() => {
+    localStorage.setItem("clothingItems", JSON.stringify(clothingItems));
+  }, [clothingItems]);
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -103,7 +114,21 @@ function App() {
                   />
                 }
               />
-              <Route path="/profile" element={<Profile />} />
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    clothingItems={clothingItems}
+                    handleAddClick={handleAddClick}
+                    onCardClick={handleCardClick}
+                    selectedCard={selectedCard}
+                    handleEditProfileModal={() => {}}
+                    onCardLike={() => {}}
+                    handleLogOutClick={() => {}}
+                    isLoggedIn={true} // Ensure this is dynamically set if needed
+                  />
+                }
+              />
             </Routes>
 
             <Footer />
