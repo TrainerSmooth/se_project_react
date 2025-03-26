@@ -13,11 +13,6 @@ const Profile = ({
   handleLogOutClick,
   isLoggedIn,
 }) => {
-  const [items, setItems] = useState(clothingItems);
-
-  useEffect(() => {
-    setItems(clothingItems); // Ensure `items` updates when `clothingItems` changes
-  }, [clothingItems]);
   return (
     <div className="profile">
       <section className="profile__sidebar">
@@ -32,7 +27,7 @@ const Profile = ({
           onCardClick={onCardClick}
           clothingItems={clothingItems}
           selectedCard={selectedCard}
-          onCardLike={onCardLike}
+          onCardLike
           isLoggedIn={isLoggedIn}
         />
       </section>

@@ -13,6 +13,7 @@ import Profile from "../Profile/Profile";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import UserContext from "../../utils/UserContext";
+import { addItems, getItems, deleteCard } from "../../utils/api"; // Import API functions
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -22,7 +23,7 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
-  const [clothingItems, setClothingItems] = useState([]); // List of clothing items
+  const [clothingItems, setClothingItems] = useState([]); // Clothing items from API
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
@@ -32,15 +33,21 @@ function App() {
 
   console.log("Current Temperature Unit:", currentTemperatureUnit);
 
-  const handleAddItem = (item) => {
-    // Create a new item with a unique ID and the current timestamp
-    const newItem = {
-      id: Date.now(), // This creates a unique ID using the current timestamp
-      ...item, // Spread the item properties (name, imageUrl, weather)
-    };
+  // Fetch clothing items from the API on mount
+  useEffect(() => {
+    getItems()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch((err) => console.error("Error fetching items:", err));
+  }, []);
 
-    // Add the new item to the clothingItems array
-    setClothingItems((prevItems) => [...prevItems, newItem]);
+  const handleAddItem = (item) => {
+    addItems(item)
+      .then((newItem) => {
+        setClothingItems((prevItems) => [...prevItems, newItem]);
+      })
+      .catch((err) => console.error("Error adding item:", err));
   };
 
   const handleCardClick = (card) => {
@@ -65,25 +72,15 @@ function App() {
   const handleDeleteCard = (cardId) => {
     if (!cardId) return;
 
-    // Remove the item from the clothing list
-    setClothingItems((prevItems) =>
-      prevItems.filter((item) => item.id !== cardId)
-    );
-
-    // Close modal after deletion
-    closeActiveModal();
+    deleteCard(cardId)
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item.id !== cardId)
+        );
+        closeActiveModal();
+      })
+      .catch((err) => console.error("Error deleting item:", err));
   };
-
-  // Load saved items from localStorage when the app starts
-  useEffect(() => {
-    const savedItems = JSON.parse(localStorage.getItem("clothingItems"));
-    if (savedItems) setClothingItems(savedItems);
-  }, []);
-
-  // Save items to localStorage whenever clothingItems changes
-  useEffect(() => {
-    localStorage.setItem("clothingItems", JSON.stringify(clothingItems));
-  }, [clothingItems]);
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -130,7 +127,6 @@ function App() {
                 }
               />
             </Routes>
-
             <Footer />
           </div>
           <AddItemModal
@@ -139,7 +135,6 @@ function App() {
             onAddItem={handleAddItem}
             closeActiveModal={closeActiveModal}
           />
-
           {/* Item Modal */}
           <ItemModal
             activeModal={activeModal}
@@ -148,7 +143,6 @@ function App() {
             setActiveModal={setActiveModal}
             onOpenDelete={openDeleteModal} // Pass function to open delete modal
           />
-
           {/* Delete Confirmation Modal */}
           {activeModal === "delete" && (
             <DeleteModal
