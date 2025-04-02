@@ -79,6 +79,7 @@ function App() {
 
     deleteCard(cardId)
       .then(() => {
+        console.log("Item deleted successfully", res);
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item.id !== cardId)
         );
