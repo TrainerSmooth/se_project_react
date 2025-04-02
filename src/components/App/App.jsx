@@ -37,6 +37,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((items) => {
+        console.log("Fetched items:", items);
         setClothingItems(items);
       })
       .catch((err) => console.error("Error fetching items:", err));
@@ -71,6 +72,10 @@ function App() {
 
   const handleDeleteCard = (cardId) => {
     if (!cardId) return;
+
+    setClothingItems(
+      (prevItems) => prevItems.filter((item) => item.id !== cardId) // Change id to _id if needed
+    );
 
     deleteCard(cardId)
       .then(() => {
