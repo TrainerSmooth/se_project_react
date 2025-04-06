@@ -1,13 +1,7 @@
+import React from "react";
 import "./ModalWithForm.css";
 
-function ModalWithForm({
-  children,
-  buttonText,
-  title,
-  isOpen,
-  onClose,
-  onSubmit,
-}) {
+function ModalWithForm({ name, onClose, isOpen, title, onSubmit, children }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div className="modal__content">

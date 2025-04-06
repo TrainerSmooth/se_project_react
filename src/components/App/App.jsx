@@ -13,7 +13,7 @@ import Profile from "../Profile/Profile";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import UserContext from "../../utils/UserContext";
-import { addItems, getItems, deleteCard } from "../../utils/api"; // Import API functions
+import { addItems, getItems, deleteCard } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -27,17 +27,13 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
-    console.log("Toggle switch clicked");
     setCurrentTemperatureUnit((prev) => (prev === "F" ? "C" : "F"));
   };
-
-  console.log("Current Temperature Unit:", currentTemperatureUnit);
 
   // Fetch clothing items from the API on mount
   useEffect(() => {
     getItems()
       .then((items) => {
-        console.log("Fetched items:", items);
         setClothingItems(items);
       })
       .catch((err) => console.error("Error fetching items:", err));
@@ -46,7 +42,7 @@ function App() {
   const handleAddItem = (item) => {
     addItems(item)
       .then((newItem) => {
-        setClothingItems((prevItems) => [...prevItems, newItem]);
+        setClothingItems((prevItems) => [newItem, ...prevItems]); // Add new item to the start
       })
       .catch((err) => console.error("Error adding item:", err));
   };
@@ -65,6 +61,23 @@ function App() {
     setSelectedCard(null);
   };
 
+  // Add Escape key listener for modals
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
   const openDeleteModal = (card) => {
     setSelectedCard(card);
     setActiveModal("delete");
@@ -73,15 +86,10 @@ function App() {
   const handleDeleteCard = (cardId) => {
     if (!cardId) return;
 
-    setClothingItems(
-      (prevItems) => prevItems.filter((item) => item.id !== cardId) // Change id to _id if needed
-    );
-
     deleteCard(cardId)
       .then(() => {
-        console.log("Item deleted successfully", res);
-        setClothingItems((prevItems) =>
-          prevItems.filter((item) => item.id !== cardId)
+        setClothingItems(
+          (prevItems) => prevItems.filter((item) => item._id !== cardId) // Use `_id` instead of `id`
         );
         closeActiveModal();
       })
@@ -113,7 +121,6 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
-                    currentTemperatureUnit={currentTemperatureUnit}
                   />
                 }
               />
@@ -155,7 +162,7 @@ function App() {
               isOpen={true}
               onClose={closeActiveModal}
               card={selectedCard} // Pass the selected card
-              handleDeleteCard={() => handleDeleteCard(selectedCard?.id)} // Pass delete function
+              handleDeleteCard={() => handleDeleteCard(selectedCard?._id)} // Use `_id`
             />
           )}
         </div>

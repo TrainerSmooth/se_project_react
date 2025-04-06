@@ -21,13 +21,13 @@ const Profile = ({
           handleLogOutClick={handleLogOutClick}
         />
       </section>
-      <section className="profile__clothing-its">
+      <section className="profile__clothing-items">
         <ClothesSection
           handleAddClick={handleAddClick}
           onCardClick={onCardClick}
           clothingItems={clothingItems}
           selectedCard={selectedCard}
-          onCardLike
+          onCardLike={onCardLike} // Pass onCardLike here
           isLoggedIn={isLoggedIn}
         />
       </section>
