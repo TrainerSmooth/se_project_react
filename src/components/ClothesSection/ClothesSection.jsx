@@ -1,13 +1,7 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
 
-const ClothesSection = ({
-  handleAddClick,
-  onCardClick,
-  clothingItems,
-  onCardLike = () => {}, // Default value for onCardLike
-  isLoggedIn,
-}) => {
+const ClothesSection = ({ handleAddClick, onCardClick, clothingItems }) => {
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">

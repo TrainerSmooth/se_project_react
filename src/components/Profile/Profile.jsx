@@ -8,18 +8,11 @@ const Profile = ({
   onCardClick,
   clothingItems,
   selectedCard,
-  handleEditProfileModal,
-  onCardLike,
-  handleLogOutClick,
-  isLoggedIn,
 }) => {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar
-          handleEditProfileModal={handleEditProfileModal}
-          handleLogOutClick={handleLogOutClick}
-        />
+        <SideBar />
       </section>
       <section className="profile__clothing-items">
         <ClothesSection
@@ -27,8 +20,6 @@ const Profile = ({
           onCardClick={onCardClick}
           clothingItems={clothingItems}
           selectedCard={selectedCard}
-          onCardLike={onCardLike} // Pass onCardLike here
-          isLoggedIn={isLoggedIn}
         />
       </section>
     </div>

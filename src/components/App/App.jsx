@@ -132,10 +132,6 @@ function App() {
                     handleAddClick={handleAddClick}
                     onCardClick={handleCardClick}
                     selectedCard={selectedCard}
-                    handleEditProfileModal={() => {}}
-                    onCardLike={() => {}}
-                    handleLogOutClick={() => {}}
-                    isLoggedIn={true} // Ensure this is dynamically set if needed
                   />
                 }
               />
